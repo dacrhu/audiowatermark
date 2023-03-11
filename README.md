@@ -1,4 +1,4 @@
-# Audiow watermark
+# Audio analog watermark
 Very simple analog audio watermark generator.
 
 Dependecies:
