@@ -1,5 +1,5 @@
 # Audio analog watermark
-Very simple analog audio watermark generator.
+Very simple audio analog watermark generator.
 
 Dependecies:
 
