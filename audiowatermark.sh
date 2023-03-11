@@ -44,12 +44,17 @@ if [ "$WMRATE" == "" ]; then
         exit -1
 fi
 
+# generate a sine wave
 sox -n -c2 -r 44100 wm.wav synth 1 sine 500
+
+# make output file
 cp $INPUT $OUTPUT
 
+# calculate values
 LENGTH=$(sox $INPUT -n stat 2>&1 | grep Length | awk {'print $3'} | cut -d"." -f1)
 RATE=$(( $LENGTH / $WMRATE ))
 
+# make splits in loops
 for i in $( eval echo {1..$RATE} ) ; do
     START=$(( $i * $WMRATE ))
     END=$(( $START + 1 ))
@@ -60,5 +65,6 @@ for i in $( eval echo {1..$RATE} ) ; do
     cp wmouttemp.wav $OUTPUT
 done
 
+# remove temp files
 rm wmouttemp.wav
 rm wm.wav
